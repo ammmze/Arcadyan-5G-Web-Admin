@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Spinner } from "react-bootstrap";
 import { AuthContext } from "../context/AuthContext";
 import WifiCard from "../components/wifiCard";

@@ -4,10 +4,12 @@ import Login from "./pages/login";
 import Signal from "./pages/signal";
 import System from "./pages/system";
 import WiFi from "./pages/wifi";
+import { Theme } from "./components/theme";
 
 function App() {
   return (
     <>
+      <Theme />
       <Nav />
       <Routes>
         <Route path="/" element={<Signal />} />

@@ -1,5 +1,4 @@
 import { Popover } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export const band4Pop = (
   <Popover id="popover-basic1">

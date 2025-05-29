@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, Container, Row, Col, Badge } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const DeviceCard = ({ intfc, data }) => {
   return (

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Card,
   Row,
