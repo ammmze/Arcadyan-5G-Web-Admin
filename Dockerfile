@@ -11,9 +11,12 @@ FROM base AS deps
 RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm fetch --frozen-lockfile
 RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile --prod
 
-FROM base
+FROM deps AS build
 COPY src ./src
 COPY public ./public
-COPY --from=deps /app/node_modules /app/node_modules
+RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm build
+
+FROM nginx:1.27.5
+COPY nginx/conf.d /etc/nginx/conf.d
+COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 3000
-CMD [ "pnpm", "start" ]
