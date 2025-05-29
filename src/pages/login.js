@@ -14,7 +14,7 @@ const Login = () => {
 
   useEffect(() => {
     setUser(null);
-  }, []);
+  }, [setUser]);
 
   function handleSubmit(event) {
     setIsLoading(true);

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   getDeviceData,
@@ -46,25 +46,11 @@ const System = () => {
    * Declare Page Navigation Function
    */
   const navigate = useNavigate();
-  /**
-   * Call Get Data on load if if user token exists. Send to login page otherwise. Refresh on changes to User State
-   */
-  useEffect(() => {
-    if (user) {
-      getData();
-      const interval = setInterval(() => {
-        getData();
-      }, 5000);
-      return () => clearInterval(interval);
-    } else {
-      navigate("/login", { replace: true });
-    }
-  }, [user]);
 
   /**
    * Get Device Client Data Function
    */
-  const getData = () => {
+  const getData = useCallback(() => {
     getDeviceData(user.token)
       .then((clientData) => {
         setClients({
@@ -89,7 +75,22 @@ const System = () => {
             console.log(response);
           });
       });
-  };
+  }, [user, setUser]);
+
+  /**
+   * Call Get Data on load if if user token exists. Send to login page otherwise. Refresh on changes to User State
+   */
+  useEffect(() => {
+    if (user) {
+      getData();
+      const interval = setInterval(() => {
+        getData();
+      }, 5000);
+      return () => clearInterval(interval);
+    } else {
+      navigate("/login", { replace: true });
+    }
+  }, [user, getData, navigate]);
 
   /**
    * Restart Gateway Function

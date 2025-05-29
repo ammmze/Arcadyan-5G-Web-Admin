@@ -7,7 +7,6 @@ import {
   Dropdown,
   Form,
   Container,
-  Col,
   Spinner,
 } from "react-bootstrap";
 import { AuthContext } from "../context/AuthContext";
@@ -39,7 +38,7 @@ const WifiSettings = ({
     setWifi2Radio(wifiData["2.4ghzSsid"]);
     setWifi5Radio(wifiData["5.0ghzSsid"]);
     setWifiBroadcast(wifiData.isBroadcastEnabled);
-  }, []);
+  }, [wifiData]);
 
   //////////////////////////
   ///////// WIFI CONFIGS/OPTIONS

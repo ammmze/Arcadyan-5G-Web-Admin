@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Spinner } from "react-bootstrap";
@@ -14,7 +14,7 @@ const WiFi = () => {
   /**
    * Get Wifi Data. Login if token expires
    */
-  const getData = () => {
+  const getData = useCallback(() => {
     setIsLoading(true);
     getWifiData(user.token)
       .then((wifiData) => {
@@ -35,7 +35,7 @@ const WiFi = () => {
             console.log(response);
           });
       });
-  };
+  }, [user, setUser]);
   /**
    * Call Get Data on load if if user token exists. Send to login page otherwise. Refresh on changes to User State
    */
@@ -49,7 +49,7 @@ const WiFi = () => {
     } else {
       navigate("/login", { replace: true });
     }
-  }, [user]);
+  }, [user, getData, navigate]);
   /**
    * Return JSX
    */

@@ -46,7 +46,7 @@ const WifiCard = ({
     } else {
       setDisableDelete(false);
     }
-  }, [wifiConfig]);
+  }, [wifiConfig, cardIndex]);
 
   const handleEditing = () => {
     setIsEditing(!isEditing);
