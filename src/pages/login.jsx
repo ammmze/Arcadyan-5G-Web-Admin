@@ -113,7 +113,7 @@ const Login = () => {
               Loading...
             </Button>
           ) : (
-            <Button variant="warning" type="submit">
+            <Button variant="primary" type="submit">
               Submit
             </Button>
           )}

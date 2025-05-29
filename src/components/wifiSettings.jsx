@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import {
   Card,
-  Row,
   Button,
   Dropdown,
   Form,
@@ -107,103 +106,63 @@ const WifiSettings = ({
 
   return (
     <Card.Footer>
-      <Container className="ms-2 me-2">
-        <Row>
-          <Form.Group
-            as={Row}
-            className="mb-3 mt-3 me-3"
-            controlId="formPlaintextSSID1"
-          >
-            <Form.Label>SSID</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder="SSID"
-              defaultValue={wifiSSID}
-              onChange={handleSSID}
-              maxLength="28"
-              isInvalid={wifiSSID.length < 1}
-            />
-          </Form.Group>
-          <Form.Group
-            as={Row}
-            className="mb-3 me-3"
-            controlId="formPlaintextPassword1"
-          >
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              defaultValue={wifiKey}
-              onChange={handleKey}
-              maxLength="63"
-              isInvalid={wifiKey.length < 8}
-            />
-          </Form.Group>
-          <Row>
-            2.5GHz Radio
-            {wifi2Radio ? (
-              <Button
-                variant="danger"
-                className="mb-3"
-                onClick={handleWifi2Radio}
-              >
-                Disable
-              </Button>
-            ) : (
-              <Button
-                variant="success"
-                className="mb-3"
-                onClick={handleWifi2Radio}
-              >
-                Enable
-              </Button>
-            )}
-          </Row>
-          <Row>
-            5.0 GHz Radio
-            {wifi5Radio ? (
-              <Button
-                variant="danger"
-                className="mb-3"
-                onClick={handleWifi5Radio}
-              >
-                Disable
-              </Button>
-            ) : (
-              <Button
-                variant="success"
-                className="mb-3"
-                onClick={handleWifi5Radio}
-              >
-                Enable
-              </Button>
-            )}
-          </Row>
-          <Row>
-            Broadcast
-            {wifiBroadcast ? (
-              <Button
-                variant="danger"
-                className="mb-3"
-                onClick={handleBroadcast}
-              >
-                Disable
-              </Button>
-            ) : (
-              <Button
-                variant="success"
-                className="mb-3"
-                onClick={handleBroadcast}
-              >
-                Enable
-              </Button>
-            )}
-          </Row>
-        </Row>
+      <Container className="mb-3">
+        <Form.Group
+          className="mb-3 mt-3"
+          controlId="formPlaintextSSID1"
+        >
+          <Form.Label>SSID</Form.Label>
+          <Form.Control
+            required
+            type="text"
+            placeholder="SSID"
+            defaultValue={wifiSSID}
+            onChange={handleSSID}
+            maxLength="28"
+            isInvalid={wifiSSID.length < 1}
+          />
+        </Form.Group>
+        <Form.Group
+          className="mb-3"
+          controlId="formPlaintextPassword1"
+        >
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            defaultValue={wifiKey}
+            onChange={handleKey}
+            maxLength="63"
+            isInvalid={wifiKey.length < 8}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Check
+            type="switch"
+            label="2.4GHz Radio"
+            checked={wifi2Radio}
+            onChange={handleWifi2Radio}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Check
+            type="switch"
+            label="5GHz Radio"
+            checked={wifi5Radio}
+            onChange={handleWifi5Radio}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Check
+            type="switch"
+            label="Broadcast SSID"
+            checked={wifiBroadcast}
+            onChange={handleBroadcast}
+          />
+        </Form.Group>
 
         <Dropdown className="mb-3" onSelect={handleEncryption}>
-          <Dropdown.Toggle variant="warning">{encryption}</Dropdown.Toggle>
+          <Dropdown.Toggle variant="secondary">{encryption}</Dropdown.Toggle>
 
           <Dropdown.Menu>
             <Dropdown.Item eventKey="WPA2/WPA3">WPA2/WPA3</Dropdown.Item>
@@ -213,7 +172,7 @@ const WifiSettings = ({
         </Dropdown>
 
         {isLoading ? (
-          <Button variant="warning" disabled>
+          <Button variant="primary" disabled>
             <Spinner
               as="span"
               animation="grow"
@@ -224,7 +183,7 @@ const WifiSettings = ({
             Saving...
           </Button>
         ) : (
-          <Button variant="warning" onClick={handleSaveConfig}>
+          <Button variant="primary" onClick={handleSaveConfig}>
             Save Changes
           </Button>
         )}

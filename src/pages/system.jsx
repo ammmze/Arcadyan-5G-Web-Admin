@@ -18,7 +18,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faArrowsRotate, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../context/AuthContext";
 import DeviceCardGroup from "../components/deviceCardGroup";
 
@@ -220,7 +220,7 @@ const System = () => {
                         className="mt-3"
                         onClick={restart}
                       >
-                        Reboot Gateway
+                        <FontAwesomeIcon icon={faArrowsRotate} /> Reboot Gateway
                       </Button>
                     </Stack>
                   )}
@@ -278,19 +278,19 @@ const System = () => {
                 <Row>
                   {showDevices ? (
                     <Button
-                      variant="danger"
+                      variant="info"
                       className="m-2"
                       onClick={deviceDisplay}
                     >
-                      Hide Devices
+                      <FontAwesomeIcon icon={faEye} /> Hide Devices
                     </Button>
                   ) : (
                     <Button
-                      variant="warning"
+                      variant="info"
                       className="m-2"
                       onClick={deviceDisplay}
                     >
-                      Show Devices
+                      <FontAwesomeIcon icon={faEyeSlash} /> Show Devices
                     </Button>
                   )}
                 </Row>

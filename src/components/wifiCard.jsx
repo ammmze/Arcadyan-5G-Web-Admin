@@ -138,7 +138,7 @@ const WifiCard = ({
           {!showDelete && (
             <>
               <Button
-                variant="warning"
+                variant="primary"
                 className="mb-1 mt-3 me-2"
                 onClick={handleEditing}
               >

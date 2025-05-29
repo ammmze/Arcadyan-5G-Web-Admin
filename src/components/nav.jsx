@@ -9,9 +9,9 @@ const NavContainer = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="primary">
       <Container>
-        <Navbar.Brand className="text-warning">KVD Admin</Navbar.Brand>
+        <Navbar.Brand>KVD Admin</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           {user && (
@@ -29,7 +29,7 @@ const NavContainer = () => {
           )}
         </Navbar.Collapse>
         <Nav className="ml-auto">
-          <Nav.Link as={Link} to="/login" className="text-warning">
+          <Nav.Link as={Link} to="/login">
             Logout
           </Nav.Link>
         </Nav>
