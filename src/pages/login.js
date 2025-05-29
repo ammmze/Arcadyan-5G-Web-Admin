@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Form, Button, Alert, Spinner } from "react-bootstrap";
+import { Form, Button, Alert, Spinner, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { loginUser } from "../modules/services";
@@ -78,46 +78,47 @@ const Login = () => {
       ) : (
         <></>
       )}
-
-      <Form onSubmit={handleSubmit} className="w-25 mx-auto">
-        <h1>Log In</h1>
-        <Form.Group className="mb-3" controlId="formPlaintextEmail">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            placeholder="admin"
-            aria-label="Disabled input example"
-            disabled
-            readOnly
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </Form.Group>
-        {isLoading ? (
-          <Button variant="warning" disabled>
-            <Spinner
-              as="span"
-              animation="grow"
-              size="sm"
-              role="status"
-              aria-hidden="true"
+      <Container>
+        <Form onSubmit={handleSubmit} className="col-md-6 mt-3 mx-auto">
+          <h1>Log In</h1>
+          <Form.Group className="mb-3" controlId="formPlaintextEmail">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              placeholder="admin"
+              aria-label="Disabled input example"
+              disabled
+              readOnly
             />
-            Loading...
-          </Button>
-        ) : (
-          <Button variant="warning" type="submit">
-            Submit
-          </Button>
-        )}
-      </Form>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </Form.Group>
+          {isLoading ? (
+            <Button variant="warning" disabled>
+              <Spinner
+                as="span"
+                animation="grow"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+              Loading...
+            </Button>
+          ) : (
+            <Button variant="warning" type="submit">
+              Submit
+            </Button>
+          )}
+        </Form>
+      </Container>
     </>
   );
 };
