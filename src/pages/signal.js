@@ -151,7 +151,7 @@ const Signal = () => {
                         variant={signalColorSwitch(
                           cellData?.signal["4g"]?.bars
                         )}
-                        now={cellData?.signal["4g"]?.bars * 20}
+                        now={cellData?.signal?.["4g"]?.bars * 20}
                         label={signalSwitch(cellData?.signal["4g"]?.bars)}
                       />
                     </Col>
@@ -161,7 +161,7 @@ const Signal = () => {
                     <Col>
                       <b>Band</b>
                     </Col>
-                    <Col>{cellData?.signal["4g"].bands}</Col>
+                    <Col>{cellData?.signal?.["4g"]?.bands}</Col>
                     <Col>
                       <OverlayTrigger
                         trigger="click"
@@ -177,7 +177,7 @@ const Signal = () => {
                     <Col>
                       <b>RSRP</b>
                     </Col>
-                    <Col>{cellData?.signal["4g"].rsrp} dBm</Col>
+                    <Col>{cellData?.signal?.["4g"]?.rsrp} dBm</Col>
                     <Col>
                       <OverlayTrigger
                         trigger="click"
@@ -192,7 +192,7 @@ const Signal = () => {
                     <Col>
                       <b>RSRQ</b>
                     </Col>
-                    <Col>{cellData?.signal["4g"].rsrq} dB</Col>
+                    <Col>{cellData?.signal?.["4g"]?.rsrq} dB</Col>
                     <Col>
                       <OverlayTrigger
                         trigger="click"
@@ -207,7 +207,7 @@ const Signal = () => {
                     <Col>
                       <b>SINR</b>
                     </Col>
-                    <Col>{cellData?.signal["4g"].sinr} dB</Col>
+                    <Col>{cellData?.signal?.["4g"]?.sinr} dB</Col>
                     <Col>
                       <OverlayTrigger
                         trigger="click"
