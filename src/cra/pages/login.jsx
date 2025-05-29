@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Form, Button, Alert, Spinner } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { loginUser } from "../modules/services";
 
@@ -10,7 +10,7 @@ const Login = () => {
   const [alertGateway, setAlertGateway] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { setUser } = useContext(AuthContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     setUser(null);
@@ -25,7 +25,8 @@ const Login = () => {
         console.log(response);
         setUser({ token: response.data.auth.token, password: password });
         setIsLoading(false);
-        navigate("/", { replace: true });
+        Astro.redirect("/")
+        // navigate("/", { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
